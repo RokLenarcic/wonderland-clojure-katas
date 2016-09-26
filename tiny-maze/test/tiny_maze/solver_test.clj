@@ -2,6 +2,15 @@
   (:require [clojure.test :refer :all]
             [tiny-maze.solver :refer :all]))
 
+(deftest test-start-pos
+  (testing "can find start position")
+   (let [maze [[:S 0 1]
+               [1  0 1]
+               [1  0 :E]]
+         maze2 [[0 1 :S]]]
+     (is (= [0 0] (pos maze :S)))
+     (is (= [0 2] (pos maze2 :S)))))
+
 (deftest test-solve-maze
   (testing "can find way to exit with 3x3 maze"
     (let [maze [[:S 0 1]
